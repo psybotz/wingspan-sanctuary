@@ -8,10 +8,8 @@ export default function CatalogPage() {
     <main 
       className="text-white" 
       style={{
-        // We renamed `background` to `backgroundImage`
-        backgroundImage: "linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url(https://images.unsplash.com/photo-1710196913619-75570747478a?q=80&w=1933&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D)",
-        backgroundSize: 'cover',
-        backgroundAttachment: 'fixed'
+        backgroundImage: "linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url(https://images.unsplash.com/photo-1445262102387-5f537a8e753e?q=80&w=2574)",
+        backgroundSize: 'cover'
       }}
     >
       <div className="py-24 text-center px-4">
@@ -21,15 +19,19 @@ export default function CatalogPage() {
         </p>
 
         <div className="flex flex-wrap justify-center gap-8">
-          {butterflies.map((kupu) => (
+          
+          {/* We get the 'index' from the map function here */}
+          {butterflies.map((kupu, index) => (
             <ButterflyCard
               key={kupu.id}
               id={kupu.id}
-              name={kupu.name} // Scientific Name
-              description={kupu.commonName} // Common Name
+              name={kupu.name}
+              description={kupu.commonName}
               location={kupu.location}
+              index={index} // And pass it as a prop here
             />
           ))}
+
         </div>
       </div>
     </main>
