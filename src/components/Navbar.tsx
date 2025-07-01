@@ -1,17 +1,42 @@
 // src/components/Navbar.tsx
 
-"use client"; // Required to use state and handle clicks
+"use client";
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react'; // Import useEffect
 import Link from 'next/link';
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
+  const [hasScrolled, setHasScrolled] = useState(false); // State to track scroll
+
+  // Effect to handle scroll event
+  useEffect(() => {
+    const handleScroll = () => {
+      // Check if user has scrolled more than 10px
+      if (window.scrollY > 10) {
+        setHasScrolled(true);
+      } else {
+        setHasScrolled(false);
+      }
+    };
+
+    // Add event listener when the component mounts
+    window.addEventListener('scroll', handleScroll);
+
+    // Clean up the event listener when the component unmounts
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, []); // Empty array ensures this effect runs only once
 
   return (
     <>
-      {/* Main Navbar */}
-      <nav className="bg-black/30 backdrop-blur-lg p-4 flex justify-between items-center sticky top-0 z-50 border-b border-white/20">
+      {/* Main Navbar with dynamic classes */}
+      <nav className={`
+        p-4 flex justify-between items-center sticky top-0 z-50 border-b
+        transition-colors duration-300
+        ${hasScrolled ? 'bg-black/30 backdrop-blur-lg border-white/20' : 'bg-transparent border-transparent'}
+      `}>
         <div className="text-xl font-bold text-white">
           <Link href="/" onClick={() => setIsOpen(false)}>Wingspan Sanctuary</Link>
         </div>
@@ -34,8 +59,8 @@ export default function Navbar() {
         </div>
       </nav>
 
-      {/* Mobile Menu Overlay */}
-      <div className={`fixed top-0 left-0 w-full h-full bg-gray-900 bg-opacity-95 z-40 transform ${isOpen ? 'translate-x-0' : '-translate-x-full'} transition-transform duration-300 ease-in-out md:hidden`}>
+      {/* Mobile Menu Overlay with Glassmorphism */}
+      <div className={`fixed top-0 left-0 w-full h-full bg-black/30 backdrop-blur-lg z-40 transform ${isOpen ? 'translate-x-0' : '-translate-x-full'} transition-transform duration-300 ease-in-out md:hidden`}>
         <div className="flex justify-end p-4">
             <button onClick={() => setIsOpen(false)} className="text-white text-4xl">&times;</button>
         </div>
