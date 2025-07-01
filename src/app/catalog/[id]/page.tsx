@@ -1,12 +1,7 @@
 import Link from 'next/link';
 import { butterflies } from '@/lib/data';
 
-// Define a more specific type for the page's props
-type Props = {
-  params: { id: string };
-};
-
-export default function ButterflyDetailPage({ params }: Props) {
+export default function ButterflyDetailPage({ params }: { params: { id: string } }) {
   const butterfly = butterflies.find(b => b.id == parseInt(params.id));
 
   if (!butterfly) {
