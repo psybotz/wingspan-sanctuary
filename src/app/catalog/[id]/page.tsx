@@ -1,7 +1,11 @@
+// src/app/catalog/[id]/page.tsx
+
 import Link from 'next/link';
+import Image from 'next/image';
 import { butterflies } from '@/lib/data';
 
-export default function ButterflyDetailPage({ params }: { params: { id: string } }) {
+// Note the 'async' keyword here. This is the key fix.
+export default async function ButterflyDetailPage({ params }: { params: { id: string } }) {
   const butterfly = butterflies.find(b => b.id == parseInt(params.id));
 
   if (!butterfly) {
@@ -26,7 +30,7 @@ export default function ButterflyDetailPage({ params }: { params: { id: string }
         <div className="bg-white p-8 rounded-lg shadow-lg grid md:grid-cols-2 gap-10 items-start">
           {/* Image Column */}
           <div>
-            <img src={butterfly.imageUrl} alt={butterfly.name} className="w-full h-auto rounded-lg" />
+            <Image src={butterfly.imageUrl} alt={butterfly.name} width={800} height={600} className="w-full h-auto rounded-lg" />
           </div>
 
           {/* Details Column */}
