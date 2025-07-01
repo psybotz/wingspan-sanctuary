@@ -1,10 +1,10 @@
 // src/app/trips/page.tsx
 
-"use client"; // Required for animations
+"use client";
 
 import TripCard from "@/components/TripCard";
 import { trips } from "@/lib/data";
-import { motion } from 'framer-motion'; // Import motion for animations
+import { motion } from 'framer-motion';
 
 export default function TripsPage() {
   return (
@@ -15,7 +15,6 @@ export default function TripsPage() {
         backgroundAttachment: 'fixed'
       }}
     >
-      {/* Animated Hero Section */}
       <section 
         className="h-[60vh] text-white flex flex-col justify-center items-center text-center px-4"
       >
@@ -33,11 +32,11 @@ export default function TripsPage() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.2 }}
         >
-          Join our expert guides on a once-in-a-lifetime journey to the world's most stunning butterfly habitats.
+          {/* The fix is here: world's becomes world&apos;s */}
+          Join our expert guides on a once-in-a-lifetime journey to the world&apos;s most stunning butterfly habitats.
         </motion.p>
       </section>
 
-      {/* Trip Packages Section */}
       <section className="py-24 px-4">
         <div className="container mx-auto">
           <motion.h2 
