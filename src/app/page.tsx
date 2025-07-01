@@ -10,7 +10,7 @@ export default function Home() {
       className="h-[70vh] bg-cover bg-center text-white flex flex-col justify-center items-center text-center px-4"
       style={{ backgroundImage: "linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('https://images.unsplash.com/photo-1501854140801-50d01698950b?q=80&w=2550')" }}
     >
-      <h1 className="text-5xl font-bold">Explore Indonesia's Butterfly Haven</h1>
+      <h1 className="text-5xl font-bold">Explore Indonesia&apos;s Butterfly Haven</h1>
       <p className="text-lg mt-4 max-w-2xl">Guided insect photography expeditions in their pristine natural habitats.</p>
       <a href="/trips" className="mt-8 bg-green-600 hover:bg-green-700 text-white font-bold py-3 px-6 rounded-lg transition-transform duration-300 hover:scale-105">
         View Trip Schedules
