@@ -1,7 +1,12 @@
 import Link from 'next/link';
+import { butterflies } from '@/lib/data';
 
+// Define a more specific type for the page's props
+type Props = {
+  params: { id: string };
+};
 
-export default function ButterflyDetailPage({ params }: { params: { id: string } }) {
+export default function ButterflyDetailPage({ params }: Props) {
   const butterfly = butterflies.find(b => b.id == parseInt(params.id));
 
   if (!butterfly) {
@@ -15,8 +20,6 @@ export default function ButterflyDetailPage({ params }: { params: { id: string }
     );
   }
 
-  // The rest of your return statement for a found butterfly is correct
-  // and does not need to be changed.
   return (
     <main className="bg-gray-50 py-16 px-4">
       <div className="max-w-5xl mx-auto">
