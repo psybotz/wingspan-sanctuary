@@ -4,9 +4,13 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { butterflies } from '@/lib/data';
 
-// Note the 'async' keyword here. This is the key fix.
-export default async function ButterflyDetailPage({ params }: { params: { id: string } }) {
-  const butterfly = butterflies.find(b => b.id == parseInt(params.id));
+// This is the correct signature for an async page in Next.js 15
+export default async function ButterflyDetailPage({ params }: { params: Promise<{ id: string }> }) {
+  
+  // We must 'await' the params to get the value
+  const { id } = await params;
+
+  const butterfly = butterflies.find(b => b.id == parseInt(id));
 
   if (!butterfly) {
     return (
