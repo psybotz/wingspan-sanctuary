@@ -13,7 +13,7 @@ export default function Home() {
   return (
     <main 
       style={{ 
-        backgroundImage: "linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('https://images.unsplash.com/photo-1501854140801-50d01698950b?q=80&w=2550')",
+        backgroundImage: "linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('/hero-background.jpg')",
         backgroundSize: 'cover',
         backgroundAttachment: 'fixed'
       }}
