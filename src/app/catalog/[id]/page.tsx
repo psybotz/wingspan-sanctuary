@@ -1,3 +1,6 @@
+import Link from 'next/link';
+
+
 export default function ButterflyDetailPage({ params }: { params: { id: string } }) {
   const butterfly = butterflies.find(b => b.id == parseInt(params.id));
 
