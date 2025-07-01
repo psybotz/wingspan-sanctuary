@@ -1,6 +1,3 @@
-// src/app/catalog/[id]/page.tsx
-
-import { butterflies } from '@/lib/data'; // Pastikan path ini sesuai dengan struktur folder kamu
 export default function ButterflyDetailPage({ params }: { params: { id: string } }) {
   const butterfly = butterflies.find(b => b.id == parseInt(params.id));
 
@@ -9,19 +6,21 @@ export default function ButterflyDetailPage({ params }: { params: { id: string }
       <main className="p-8 text-center">
         <h1 className="text-4xl font-bold">Butterfly Not Found!</h1>
         <p className="mt-4">
-          <Link href="/catalog" className="text-green-600 hover:underline">&larr; Back to Catalog</a>
+          <Link href="/catalog" className="text-green-600 hover:underline">&larr; Back to Catalog</Link>
         </p>
       </main>
     );
   }
 
+  // The rest of your return statement for a found butterfly is correct
+  // and does not need to be changed.
   return (
     <main className="bg-gray-50 py-16 px-4">
       <div className="max-w-5xl mx-auto">
         <div className="text-left mb-8">
-          <a Link="/catalog" className="text-green-600 hover:underline font-semibold">
+          <Link href="/catalog" className="text-green-600 hover:underline font-semibold">
             &larr; Back to Catalog
-          </a>
+          </Link>
         </div>
         <div className="bg-white p-8 rounded-lg shadow-lg grid md:grid-cols-2 gap-10 items-start">
           {/* Image Column */}
